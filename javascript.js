@@ -15,12 +15,26 @@ $("#stop").click(function () {
   javascriptaudio.currentTime = 0;
 });
 
+$("#volup").click(function () {
+  javascriptaudio.volume = javascriptaudio.volume + 0.1;
+  setvol();
+});
+
+$("#voldown").click(function () {
+  javascriptaudio.volume = javascriptaudio.volume - 0.1;
+  setvol();
+});
+
 function settime() {
   console.log("binsoweit");
   $("#timer").text(
     "0:00 / " +
       new Date(javascriptaudio.duration * 1000).toISOString().substr(15, 4)
   );
+}
+
+function setvol() {
+  $("#vol").text(Math.floor(javascriptaudio.volume * 100) + "%");
 }
 
 function jstimer() {

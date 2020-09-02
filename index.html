@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+    <script src="https://kit.fontawesome.com/a759227025.js" crossorigin="anonymous"></script>
+
 </head>
-<body  onload="settime()">
+<body  onload="settime(), setvol()">
     <h1>HTML Audio Test</h1>
     <section>
         <h2>Native HTML Audio</h2>
@@ -21,11 +23,15 @@
         <p>Dies ist ein Audiotest des nativen HTML5 Audio-Players gesteuert durch Javascript.</p>
         <audio ontimeupdate="jstimer()" id="javascriptaudio" src="audio/javascriptaudio.mp3"></audio>
         <div id="player">
-            <button id="start">Start</button>
-            <button id="pause">Pause</button>
-            <button id="stop">Stop</button>
-            <span id="timer"></span>
-            <div id="balkenkasten"><div id="balken"></div></div>
+            <button class="playeritem" id="start"><i class="fas fa-play"></i></button>
+            <button class="playeritem" id="pause"><i class="fas fa-pause"></i></button>
+            <button class="playeritem" id="stop"><i class="fas fa-stop"></i></button>
+            <span class="playeritem" id="timer"></span>
+            <div class="playeritem" id="balkenkasten"><div id="balken"></div></div>
+            <button class="playeritem" id="volup"><i class="fas fa-volume-up"></i></button>
+            <button class="playeritem" id="voldown"><i class="fas fa-volume-down"></i></button>
+            <span class="playeritem" id="vol"></span>
+            <a class="playeritem" href="audio/javascriptaudio.mp3" download>Download</a>
         </div>
         
         
