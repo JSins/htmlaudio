@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Audio</title>
     <link rel="stylesheet" href="style.css">
+    <!-- <link type="text/css" href="skin/jplayer.pink.flag.css" rel="stylesheet"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
     <script src="https://kit.fontawesome.com/a759227025.js" crossorigin="anonymous"></script>
@@ -33,16 +34,21 @@
             <span class="playeritem" id="vol"></span>
             <a class="playeritem" href="audio/javascriptaudio.mp3" download>Download</a>
         </div>
-        
-        
-        
     </section>
 
-    <section id="jplayer">
+    <section>
         <h2>jPlayer Audio Test</h2>
-        <p>Dies ist ein Audiotest der Javascript-Bibliothek jPlayer.</p>
-        <button class="start">Start</button>
-        <button class="stop">Stop</button>
+            <p>Dies ist ein Audiotest der Javascript-Bibliothek jPlayer.</p>
+            <select type="select" name="jptracks">
+                <option value="0">Track 1</option>
+                <option value="1">Track 2</option>
+                <option value="2">Track 3</option>
+                <option value="3">Track 4</option>
+            </select>
+            <button id="jpstart">Start</button>
+            <button id="jpstop">Stop</button>
+            <button id="jpnext">Next</button>
+        <div id="jplayer"></div>
     </section>
 
 

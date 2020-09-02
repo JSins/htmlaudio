@@ -50,19 +50,24 @@ function jstimer() {
 
 // ---------------------------------------------------------------------------------------
 
+// jPlayer -------------------------------------------------------------------------------
+
 $(document).ready(function () {
   $("#jplayer").jPlayer({
     supplied: "mp3",
-    swfPath: "/js",
+    swfPath: "js/",
   });
 });
 
-$(".start").on("click", setAudioMedia);
-
-var setAudioMedia = function () {
-  $("##jplayer")
+$("#jpstart").click(function () {
+  $("#jplayer")
     .jPlayer("setMedia", {
-      mp3: "audio/html5native.mp3",
+      mp3: "audio/jplayer.mp3",
     })
     .jPlayer("play");
-};
+});
+
+$("#jpstop").click(function () {
+  $("#jplayer").jPlayer("pause");
+});
+// -----------------------------------------------------------------------------------------
