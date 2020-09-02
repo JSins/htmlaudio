@@ -54,15 +54,21 @@ function jstimer() {
 
 $(document).ready(function () {
   $("#jplayer").jPlayer({
-    supplied: "mp3",
+    supplied: "wav",
     swfPath: "js/",
+    timeupdate: onTimeupdate,
   });
 });
+
+var onTimeupdate = function (e) {
+  var timeText = $.jPlayer.convertTime(e.jPlayer.status.currentTime);
+  $("#jptimer").text(timeText);
+};
 
 $("#jpstart").click(function () {
   $("#jplayer")
     .jPlayer("setMedia", {
-      mp3: "audio/jplayer.mp3",
+      wav: "audio/Jp" + $("#jptracks").find(":selected").val() + ".wav",
     })
     .jPlayer("play");
 });
@@ -70,4 +76,39 @@ $("#jpstart").click(function () {
 $("#jpstop").click(function () {
   $("#jplayer").jPlayer("pause");
 });
+
+$("#jpnext").click(function () {
+  if (
+    $("#jptracks").find(":selected").val() ==
+    $("#jptracks option").length - 1
+  ) {
+    $("#jptracks").val(0);
+  } else if (
+    $("#jptracks").find(":selected").val() ==
+    $("#jptracks option").length - 2
+  ) {
+    $("#jptracks").val(3);
+  } else if (
+    $("#jptracks").find(":selected").val() ==
+    $("#jptracks option").length - 3
+  ) {
+    $("#jptracks").val(2);
+  } else if (
+    $("#jptracks").find(":selected").val() ==
+    $("#jptracks option").length - 4
+  ) {
+    $("#jptracks").val(1);
+  }
+  $("#jplayer")
+    .jPlayer("setMedia", {
+      wav: "audio/Jp" + $("#jptracks").find(":selected").val() + ".wav",
+    })
+    .jPlayer("play");
+});
+
+function jpsettime() {
+  console.log("bin auch reddi");
+  $("#jptimer").text("00:00");
+}
+
 // -----------------------------------------------------------------------------------------

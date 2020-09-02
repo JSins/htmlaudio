@@ -23,7 +23,7 @@ button:hover
     cursor: pointer;
 }
 
-#player
+.player
 {
     display: flex;
 }

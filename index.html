@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/a759227025.js" crossorigin="anonymous"></script>
 
 </head>
-<body  onload="settime(), setvol()">
+<body  onload="settime(), setvol(), jpsettime()">
     <h1>HTML Audio Test</h1>
     <section>
         <h2>Native HTML Audio</h2>
@@ -23,7 +23,7 @@
         <h2>HTML/Javascript Audio Test</h2>
         <p>Dies ist ein Audiotest des nativen HTML5 Audio-Players gesteuert durch Javascript.</p>
         <audio ontimeupdate="jstimer()" id="javascriptaudio" src="audio/javascriptaudio.mp3"></audio>
-        <div id="player">
+        <div class="player">
             <button class="playeritem" id="start"><i class="fas fa-play"></i></button>
             <button class="playeritem" id="pause"><i class="fas fa-pause"></i></button>
             <button class="playeritem" id="stop"><i class="fas fa-stop"></i></button>
@@ -38,16 +38,20 @@
 
     <section>
         <h2>jPlayer Audio Test</h2>
-            <p>Dies ist ein Audiotest der Javascript-Bibliothek jPlayer.</p>
-            <select type="select" name="jptracks">
+        <p>Dies ist ein Audiotest der Javascript-Bibliothek jPlayer.</p>
+        <div class="player">
+            <button class="playeritem" id="jpstart"><i class="fas fa-play"></i></button>
+            <button class="playeritem" id="jpstop"><i class="fas fa-stop"></i></button>
+            <button class="playeritem" id="jpnext"><i class="fas fa-forward"></i></button>
+            <span class="playeritem" id="jptimer"></span>
+            <span class="playeritem">Now Playing:</span>
+            <select class="playeritem" id="jptracks" type="select" name="jptracks">
                 <option value="0">Track 1</option>
                 <option value="1">Track 2</option>
                 <option value="2">Track 3</option>
                 <option value="3">Track 4</option>
             </select>
-            <button id="jpstart">Start</button>
-            <button id="jpstop">Stop</button>
-            <button id="jpnext">Next</button>
+        </div>
         <div id="jplayer"></div>
     </section>
 
