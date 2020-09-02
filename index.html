@@ -5,12 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Audio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 </head>
-<body>
+<body  onload="settime()">
     <h1>HTML Audio Test</h1>
     <section>
         <h2>Native HTML Audio</h2>
+        <p>Dies ist ein Audiotest des nativen HTML5 Audio-Players.</p>
         <audio controls src="audio/html5native.mp3"></audio>
     </section>
+
+    <section>
+        <h2>HTML/Javascript Audio Test</h2>
+        <p>Dies ist ein Audiotest des nativen HTML5 Audio-Players gesteuert durch Javascript.</p>
+        <audio ontimeupdate="jstimer()" id="javascriptaudio" src="audio/javascriptaudio.mp3"></audio>
+        <div id="player">
+            <button id="start">Start</button>
+            <button id="pause">Pause</button>
+            <button id="stop">Stop</button>
+            <span id="timer"></span>
+            <div id="balkenkasten"><div id="balken"></div></div>
+        </div>
+        
+        
+        
+    </section>
+
+    <section id="jplayer">
+        <h2>jPlayer Audio Test</h2>
+        <p>Dies ist ein Audiotest der Javascript-Bibliothek jPlayer.</p>
+        <button class="start">Start</button>
+        <button class="stop">Stop</button>
+    </section>
+
+
+    <script src="javascript.js"></script>
 </body>
 </html>
