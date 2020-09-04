@@ -54,7 +54,7 @@ function jstimer() {
 
 $(document).ready(function () {
   $("#jplayer").jPlayer({
-    supplied: "wav",
+    supplied: "mp3",
     swfPath: "js/",
     timeupdate: onTimeupdate,
   });
@@ -68,7 +68,7 @@ var onTimeupdate = function (e) {
 $("#jpstart").click(function () {
   $("#jplayer")
     .jPlayer("setMedia", {
-      wav: "audio/Jp" + $("#jptracks").find(":selected").val() + ".wav",
+      mp3: "audio/Jp" + $("#jptracks").find(":selected").val() + ".mp3",
     })
     .jPlayer("play");
 });
@@ -101,7 +101,7 @@ $("#jpnext").click(function () {
   }
   $("#jplayer")
     .jPlayer("setMedia", {
-      wav: "audio/Jp" + $("#jptracks").find(":selected").val() + ".wav",
+      mp3: "audio/Jp" + $("#jptracks").find(":selected").val() + ".mp3",
     })
     .jPlayer("play");
 });
