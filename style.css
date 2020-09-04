@@ -4,6 +4,12 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+body
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 section
 {
     background: #dddddd;
@@ -18,7 +24,30 @@ p
     line-height: 16pt;
 }
 
+button
+{
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+    border-style: none;
+    background: cornflowerblue;
+    transition: 0.2s;
+    outline:none;
+}
+
+#apiloop{
+    background: rgb(189, 197, 211);
+}
+
+
 button:hover
+{
+    cursor: pointer;
+    background: rgb(159, 185, 233);
+}
+
+input[type="range"]:hover
 {
     cursor: pointer;
 }
@@ -49,4 +78,9 @@ button:hover
     background: #353535;
     margin: 0;
     border-radius: 2px;
+}
+
+td
+{
+    padding-right: 15px;
 }

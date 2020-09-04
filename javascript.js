@@ -112,3 +112,84 @@ function jpsettime() {
 }
 
 // -----------------------------------------------------------------------------------------
+
+// Howler.js -------------------------------------------------------------------------------
+
+var apisound = new Howl({
+  src: ["audio/webaudioapi.mp3"],
+  volume: 0.5,
+});
+
+$("#apistart").click(function () {
+  apisound.play();
+});
+
+// Loop --------------------------------------------------
+
+var loop = false;
+
+$("#apiloop").click(function () {
+  if (loop == false) {
+    apisound.loop(true);
+    $(this).css("background", "cornflowerblue");
+    loop = true;
+  } else if (loop == true) {
+    apisound.loop(false);
+    $(this).css("background", "rgb(189, 197, 211)");
+    loop = false;
+  }
+});
+
+// -------------------------------------------------------
+
+// Lautstärke --------------------------------------------
+
+var apivol;
+
+$(document).on("input", "#apivolume", function () {
+  $("#apivolval").html($(this).val());
+  apivol = $(this).val();
+  apisound.volume(apivol / 100);
+});
+
+// -------------------------------------------------------
+
+// Geschwindigkeit ---------------------------------------
+
+var apispeed;
+
+$(document).on("input", "#apispeed", function () {
+  $("#apispeedval").html($(this).val() + "%");
+  apispeed = $(this).val();
+  apisound.rate(apispeed / 100);
+});
+
+// -------------------------------------------------------
+
+// 3D Position -------------------------------------------
+
+var apipos;
+
+$(document).on("input", "#apipos", function () {
+  $("#apistereo").val(0);
+  $("#apiposval").html($(this).val());
+  apipos = $(this).val();
+  apisound.pos(apipos / 100);
+});
+
+// -------------------------------------------------------
+
+// 2D Position -------------------------------------------
+
+var apistereo;
+
+$(document).on("input", "#apistereo", function () {
+  $("#apipos").val(0);
+  $("#apistereoval").html($(this).val());
+  apistereo = $(this).val();
+  apisound.stereo(apistereo / 100);
+});
+
+// -------------------------------------------------------
+
+// -----------------------------------------------------------------------------------------

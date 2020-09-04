@@ -9,10 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
     <script src="https://kit.fontawesome.com/a759227025.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
 
 </head>
 <body  onload="settime(), setvol(), jpsettime()">
-    <h1>HTML Audio Test</h1>
     <section>
         <h2>Native HTML Audio</h2>
         <p>Dies ist ein Audiotest des nativen HTML5 Audio-Players.</p>
@@ -53,6 +53,45 @@
             </select>
         </div>
         <div id="jplayer"></div>
+    </section>
+
+    <section>
+        <h2>Howler.js Audio Test (Web Audio API)</h2>
+        <p>Dies ist ein Audiotest der Web Audio API, bereitgestellt durch Howler.js.</p>
+        <div class="player">
+            <button class="playeritem" id="apistart"><i class="fas fa-play"></i></button>
+            <button class="playeritem" id="apiloop"><i class="fas fa-redo-alt"></i></button>  
+        </div>   
+        <table>
+            <tr>
+                <td>Lautstärke:</td>
+                <td><i class="fas fa-volume-down"></i></td>
+                <td><input type="range" name="apivolume" id="apivolume" min="0" max="100" step="1"></td>
+                <td><span id="apivolval">50</span></td>
+                <td><i class="fas fa-volume-up"></i></td>
+            </tr>
+            <tr>
+                <td>Geschwindigkeit:</td>
+                <td><i class="fas fa-angle-right"></i></td>
+                <td><input type="range" name="apispeed" id="apispeed" min="10" max="200" step="1"></td>
+                <td><span id="apispeedval">100%</span></td>
+                <td><i class="fas fa-angle-double-right"></i></td>
+            </tr>
+            <tr>
+                <td>3D Position:</td>
+                <td>L</td>
+                <td><input type="range" name="apipos" id="apipos" min="-500" max="500" step="1"></td>
+                <td><span id="apiposval">0</span></td>
+                <td>R</td>
+            </tr>
+            <tr>
+                <td>2D Position:</td>
+                <td>L</td>
+                <td><input type="range" name="apistereo" id="apistereo" min="-100" max="100" step="1"></td>
+                <td><span id="apistereoval">0</span></td>
+                <td>R</td>
+            </tr>
+        </table>  
     </section>
 
 
