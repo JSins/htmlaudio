@@ -1,52 +1,74 @@
 //Javascript Audio -----------------------------------------------------------------------
 
+// Player ---------------------------------------------
+
 var javascriptaudio = document.getElementById("javascriptaudio");
 
-$("#start").click(function () {
-  javascriptaudio.play();
-});
+var javstart = false;
 
-$("#pause").click(function () {
-  javascriptaudio.pause();
+$("#start").click(function () {
+  if (javstart == false) {
+    javascriptaudio.play();
+    javstart = true;
+    $(this).html("<i class='fas fa-pause'></i>");
+  } else if (javstart == true) {
+    javascriptaudio.pause();
+    javstart = false;
+    $(this).html("<i class='fas fa-play'></i>");
+  }
 });
 
 $("#stop").click(function () {
   javascriptaudio.pause();
   javascriptaudio.currentTime = 0;
+  javstart = false;
+  $("#start").html("<i class='fas fa-play'></i>");
 });
 
-$("#volup").click(function () {
-  javascriptaudio.volume = javascriptaudio.volume + 0.1;
-  setvol();
-});
+// ------------------------------------------------------
 
-$("#voldown").click(function () {
-  javascriptaudio.volume = javascriptaudio.volume - 0.1;
-  setvol();
-});
-
-function settime() {
-  console.log("binsoweit");
-  $("#timer").text(
-    "0:00 / " +
-      new Date(javascriptaudio.duration * 1000).toISOString().substr(15, 4)
-  );
-}
+// Lautstärke -------------------------------------------
 
 function setvol() {
-  $("#vol").text(Math.floor(javascriptaudio.volume * 100) + "%");
+  javascriptaudio.volume = 0.5;
+}
+
+var javvol;
+
+$(document).on("input", "#javvol", function () {
+  $("#javvolval").html($(this).val());
+  javvol = $(this).val();
+  javascriptaudio.volume = javvol / 100;
+});
+
+// -------------------------------------------------------
+
+// Timer -------------------------------------------------
+
+function settime() {
+  $("#timer").text(
+    "0:00/" +
+      new Date(javascriptaudio.duration * 1000).toISOString().substr(15, 4)
+  );
 }
 
 function jstimer() {
   $("#timer").text(
     new Date(javascriptaudio.currentTime * 1000).toISOString().substr(15, 4) +
-      " / " +
+      "/" +
       new Date(javascriptaudio.duration * 1000).toISOString().substr(15, 4)
   );
   var balkenanteil =
     (javascriptaudio.currentTime / javascriptaudio.duration) * 100;
   $("#balken").css("width", balkenanteil + "%");
+  if (balkenanteil >= 100) {
+    javascriptaudio.pause();
+    javstart = false;
+    $("#start").html("<i class='fas fa-play'></i>");
+  }
 }
+
+// --------------------------------------------------------
 
 // ---------------------------------------------------------------------------------------
 
@@ -120,8 +142,26 @@ var apisound = new Howl({
   volume: 0.5,
 });
 
+var apistart = false;
+
 $("#apistart").click(function () {
-  apisound.play();
+  if (apistart == false) {
+    apisound.play();
+    apistart = true;
+    $(this).html("<i class='fas fa-pause'></i>");
+  } else if (apistart == true) {
+    apisound.pause();
+    apistart = false;
+    $(this).html("<i class='fas fa-play'></i>");
+  }
+});
+
+$("#apistop").click(function () {
+  apisound.stop();
+  apistart = false;
+  $("#apistart").html("<i class='fas fa-play'></i>");
+  $("#apirange").val(0);
+  $("#apitimer").text("0:00");
 });
 
 // Loop --------------------------------------------------
@@ -139,6 +179,40 @@ $("#apiloop").click(function () {
     loop = false;
   }
 });
+
+// -------------------------------------------------------
+
+// Dauer -------------------------------------------------
+
+$(document).on("input", "#apirange", function () {
+  apisound.seek(($("#apirange").val() * apisound.duration()) / 100);
+});
+
+function apisettime() {
+  $("#apidur").text(
+    new Date(apisound.duration() * 1000).toISOString().substr(15, 4)
+  );
+
+  $("#apitimer").text("0:00");
+}
+
+setInterval(() => {
+  if (apisound.playing()) {
+    $("#apitimer").text(
+      new Date(apisound.seek() * 1000).toISOString().substr(15, 4)
+    );
+    let range = Math.ceil((apisound.seek() / apisound.duration()) * 100);
+    $("#apirange").val(range);
+    if (range >= 100) {
+      apistart = false;
+      if (loop == false) {
+        $("#apistart").html("<i class='fas fa-play'></i>");
+      }
+      $("#apirange").val(0);
+      $("#apitimer").text("0:00");
+    }
+  }
+}, 30);
 
 // -------------------------------------------------------
 
